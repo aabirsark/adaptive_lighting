@@ -33,7 +33,7 @@ export default function Home() {
     socket.on("distance", (data) => {
       console.log(data);
       if (Number(data) <= 300) {
-        setDistance(Number(data) / 2);
+        setDistance(Number(data));
       } else {
         setDistance(null);
       }
@@ -50,15 +50,15 @@ export default function Home() {
     // set headlight color
     if (distance <= 200 && distance >= 120) {
       setHeadlightDesColor("border-t-green-400");
-      setHeadlightColor("-green-400");
+      setHeadlightColor("text-green-400");
     } else if (distance < 120 && distance > 50) {
       setHeadlightDesColor("border-t-amber-400");
-      setHeadlightColor("-amber-400");
+      setHeadlightColor("text-amber-400");
     } else if (distance <= 50 && distance > 0) {
       setHeadlightDesColor("border-t-red-400");
-      setHeadlightColor("-red-400");
+      setHeadlightColor("text-red-400");
     } else if (distance === 0 || distance === null) {
-      setHeadlightColor("-green-300");
+      setHeadlightColor("text-green-300");
       setHeadlightDesColor("border-t-green-300");
     }
 
@@ -96,7 +96,7 @@ export default function Home() {
               {distance !== null ? (
                 <>
                   <span
-                    className={`text${headlightColor} transition-all duration-700`}
+                    className={`${headlightColor} transition-all duration-700`}
                   >
                     {distance}m
                   </span>{" "}
@@ -141,7 +141,7 @@ export default function Home() {
               <div
                 className="p-3 rounded-xl border-2 border-zinc-900 "
                 onClick={() => {
-                  setLighting(!lighting);
+                  // setLighting(!lighting);
                 }}
               >
                 <Image
